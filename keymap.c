@@ -29,10 +29,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_P1, KC_P2, KC_P3, KC_NO,
                                    /**/ TO(0), KC_NO, KC_NO, KC_RGUI, KC_NO, KC_NO),
 
-    [_LAYER3] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_NO, KC_MS_U, KC_NO, KC_NO, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO,
-                                   /**/ KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-                                   /**/ KC_NO, KC_BTN2, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-                                   /**/ TO(0), KC_NO, KC_NO, KC_RGUI, KC_NO, KC_RALT)
+    [_LAYER3] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_PGDN, KC_MS_U, KC_PGUP, KC_NO, /**/ KC_NO, RCTL(RSFT(KC_TAB)), KC_UP, RCTL(KC_TAB), KC_NO,
+                                   /**/ KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, /**/ KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+                                   /**/ KC_NO, KC_BTN2, KC_MS_WH_UP, KC_MS_WH_DOWN, KC_NO, /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                   /**/ TO(0), KC_NO, KC_RSFT, /**/ KC_RGUI, KC_NO, KC_RALT)
 
 };
 
