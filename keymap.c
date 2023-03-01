@@ -1,38 +1,45 @@
 #include QMK_KEYBOARD_H
 
-#define _LAYER0 0
-#define _LAYER1 1
-#define _LAYER2 2
-#define _LAYER3 3
+#define _QWERTY 4
+#define _SYMBOLS 1
+#define _NUMBERS 2
+#define _NAVIGATION 3
+#define _COLEMAK 0
 
 enum custom_keycodes {
     LAYER0 = SAFE_RANGE,
     LAYER1,
     LAYER2,
     LAYER3,
+    LAYER4,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_LAYER0] = LAYOUT_split_3x5_3(/**/ KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_BSPC,
+    [_COLEMAK] = LAYOUT_split_3x5_3(/**/ KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_BSPC,
+                                    /**/ KC_A, KC_R, KC_S, KC_T, KC_G, KC_M, KC_N, KC_E, KC_I, KC_O,
+                                    /**/ KC_Z, KC_X, KC_C, KC_D, KC_V, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH,
+                                    /**/ OSM(MOD_RCTL), MEH_T(KC_SPACE), OSM(MOD_RSFT), OSM(MOD_RGUI), OSL(1), OSM(MOD_RALT)),
+
+    [_QWERTY] = LAYOUT_split_3x5_3(/**/ KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_BSPC,
                                    /**/ KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_P,
                                    /**/ KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH,
-                                   /**/ OSM(MOD_RCTL), MEH_T(KC_SPACE), OSM(MOD_RSFT), OSM(MOD_RGUI), OSL(1), OSM(MOD_RALT)),
+                                   /**/ OSM(MOD_RCTL), MEH_T(KC_SPACE), OSM(MOD_RSFT), OSM(MOD_RGUI), TO(0), OSM(MOD_RALT)),
 
-    [_LAYER1] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS,
-                                   /**/ KC_TAB, KC_DQUO, KC_LPRN, KC_RPRN, KC_UNDS, KC_BSLS, KC_LCBR, KC_RCBR, KC_PIPE, KC_ENT,
-                                   /**/ KC_TILD, KC_QUOT, KC_EQL, KC_COLN, KC_GRV, KC_NO, KC_LBRC, KC_RBRC, KC_NO, TO(3),
-                                   /**/ KC_EXLM, KC_SCLN, KC_NO, KC_NO, TO(2), KC_RALT),
+    [_SYMBOLS] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS,
+                                    /**/ KC_TAB, KC_DQUO, KC_LPRN, KC_RPRN, KC_UNDS, KC_BSLS, KC_LCBR, KC_RCBR, KC_PIPE, KC_ENT,
+                                    /**/ KC_TILD, KC_QUOT, KC_EQL, KC_COLN, KC_GRV, KC_NO, KC_LBRC, KC_RBRC, KC_NO, TO(3),
+                                    /**/ KC_EXLM, KC_SCLN, KC_NO, KC_NO, TO(2), KC_RALT),
 
-    [_LAYER2] = LAYOUT_split_3x5_3(KC_ESC, KC_MPLY, KC_MRWD, KC_MFFD, KC_NO, KC_NO, KC_P7, KC_P8, KC_P9, KC_BSPC,
-                                   /**/ KC_TAB, KC_NO, KC_VOLD, KC_VOLU, KC_NO, KC_NO, KC_P4, KC_P5, KC_P6, KC_ENT,
-                                   /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_P1, KC_P2, KC_P3, KC_NO,
-                                   /**/ TO(0), KC_NO, KC_NO, KC_RGUI, KC_NO, KC_NO),
+    [_NUMBERS] = LAYOUT_split_3x5_3(KC_ESC, KC_MPLY, KC_MRWD, KC_MFFD, KC_NO, KC_NO, KC_P7, KC_P8, KC_P9, KC_BSPC,
+                                    /**/ KC_TAB, KC_NO, KC_VOLD, KC_VOLU, KC_NO, KC_NO, KC_P4, KC_P5, KC_P6, KC_ENT,
+                                    /**/ TO(4), KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_P1, KC_P2, KC_P3, KC_NO,
+                                    /**/ TO(0), KC_NO, KC_NO, KC_RGUI, KC_NO, KC_NO),
 
-    [_LAYER3] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_PGDN, KC_MS_U, KC_PGUP, KC_NO, /**/ KC_NO, RCTL(RSFT(KC_TAB)), KC_UP, RCTL(KC_TAB), KC_NO,
-                                   /**/ KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, /**/ KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-                                   /**/ KC_NO, KC_BTN2, KC_MS_WH_UP, KC_MS_WH_DOWN, KC_NO, /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-                                   /**/ TO(0), KC_NO, KC_RSFT, /**/ KC_RGUI, KC_NO, KC_RALT)
+    [_NAVIGATION] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_PGDN, KC_MS_U, KC_PGUP, KC_NO, /**/ KC_NO, RCTL(RSFT(KC_TAB)), KC_UP, RCTL(KC_TAB), KC_NO,
+                                       /**/ KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, /**/ KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+                                       /**/ KC_NO, KC_BTN2, KC_MS_WH_UP, KC_MS_WH_DOWN, KC_NO, /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                       /**/ TO(0), KC_NO, KC_RSFT, /**/ KC_RGUI, KC_NO, KC_RALT)
 
 };
 
@@ -52,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     { 87, 245, 204 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [1] = {
+    [_SYMBOLS] = {
         /**/ CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE,
         /**/ CLR_PINK,   CLR_PINK,   CLR_PINK,   CLR_PINK,   CLR_PINK,   CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE,
         /**/ CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE, CLR_PURPLE,
@@ -60,7 +67,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         /**/ CLR_PINK,   CLR_PURPLE, CLR_PINK,   CLR_PURPLE, CLR_PINK,   CLR_PURPLE, CLR_PINK,   CLR_PURPLE, CLR_PINK,   CLR_PURPLE, CLR_PINK, CLR_PURPLE,
     },
 
-    [2] = {
+    [_NUMBERS] = {
         /**/ CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN,
         /**/ CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN,
         /**/ CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN,
@@ -68,7 +75,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         /**/ CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN, CLR_GREEN,
     },
 
-    [3] = {
+    [_NAVIGATION] = {
         /**/ CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED,
         /**/ CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED,
         /**/ CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED, CLR_RED,
@@ -117,17 +124,14 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-    switch (biton32(layer_state)) {
+    int active_layer = biton32(layer_state);
+    switch (active_layer) {
         // NOTE: I am intentionally not setting anything for layer 0, I
         //       want that to have the standard animations
-        case 1:
-            set_layer_color(1);
-            return true;
-        case 2:
-            set_layer_color(2);
-            return true;
-        case 3:
-            set_layer_color(3);
+        case _SYMBOLS:
+        case _NUMBERS:
+        case _NAVIGATION:
+            set_layer_color(active_layer);
             return true;
         default:
             if (rgb_matrix_get_flags() == LED_FLAG_NONE) {
@@ -138,15 +142,37 @@ bool rgb_matrix_indicators_user(void) {
     }
     return false;
 }
-/*
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case RGB_SLD:
-            if (record->event.pressed) {
-                rgblight_mode(1);
-            }
-            return false;
+
+bool dm_render_status(void) {
+    // Host Keyboard Layer Status
+    oled_write_P(PSTR("Layer: "), false);
+    switch (get_highest_layer(layer_state)) {
+        case _QWERTY:
+            oled_write_P(PSTR("QWERTY\n"), false);
+            break;
+        case _COLEMAK:
+            oled_write_P(PSTR("COLEMAK\n"), false);
+            break;
+        case _SYMBOLS:
+            oled_write_P(PSTR("SYMBOLS\n"), false);
+            break;
+        case _NUMBERS:
+            oled_write_P(PSTR("NUMBERS\n"), false);
+            break;
+        case _NAVIGATION:
+            oled_write_P(PSTR("NAVIGATION\n"), false);
+            break;
+        default:
+            // Or use the write_ln shortcut over adding '\n' to the end of your string
+            oled_write_ln_P(PSTR("Undefined"), false);
     }
-    return true;
+
+    return false;
 }
-*/
+
+bool oled_task_user(void) {
+    if (is_keyboard_master()) {
+        dm_render_status(); // Renders the current keyboard state (layer, lock, caps, scroll, etc)
+    }
+    return false;
+}
