@@ -78,7 +78,6 @@
 #    define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
 
-#define IGNORE_MOD_TAP_INTERRUPT
 #undef DEBOUNCE
 #define DEBOUNCE 5
 
