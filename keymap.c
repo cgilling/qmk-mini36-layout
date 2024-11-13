@@ -36,8 +36,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_P1, KC_P2, KC_P3, KC_NO,
                                     /**/ KC_NO, KC_NO, KC_NO, KC_RGUI, KC_NO, KC_NO),
 
-    [_NAVIGATION] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_PGDN, KC_MS_U, KC_PGUP, KC_NO, /**/ KC_NO, RCTL(RSFT(KC_TAB)), KC_UP, RCTL(KC_TAB), KC_NO,
-                                       /**/ KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, /**/ KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
+    [_NAVIGATION] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_PGDN, KC_MS_U, KC_PGUP, UG_NEXT, /**/ KC_NO, RCTL(RSFT(KC_TAB)), KC_UP, RCTL(KC_TAB), KC_NO,
+                                       /**/ KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, UG_PREV, /**/ KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
                                        /**/ KC_NO, KC_NO, KC_RALT, KC_RGUI, KC_NO, /**/ KC_BTN2, KC_MS_ACCEL0, KC_MS_ACCEL1, KC_MS_ACCEL2, KC_NO,
                                        /**/ KC_NO, KC_NO, KC_RSFT, /**/ KC_RGUI, KC_NO, KC_RALT)
 
@@ -94,11 +94,11 @@ const int rgb_matrix_backmap[RGB_MATRIX_LED_COUNT] = {
 // NOTE: a lot of this color management code was taken from the keymap.c generated
 //       from my moonlander layout, I had to modify it a bit to work with the base
 //       QMK repo
-
+/*
 extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_user(void) {
-    rgb_matrix_enable();
+    // rgb_matrix_enable();
 }
 
 void set_layer_color(int layer) {
@@ -137,7 +137,7 @@ bool rgb_matrix_indicators_user(void) {
     }
     return false;
 }
-
+*/
 bool dm_render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
