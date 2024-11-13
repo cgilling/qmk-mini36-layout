@@ -17,46 +17,41 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_COLEMAK] = LAYOUT_split_3x5_3(/**/ KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_BSPC,
-                                    /**/ KC_A, KC_R, KC_S, KC_T, KC_G, KC_M, KC_N, KC_E, KC_I, KC_O,
-                                    /**/ KC_Z, KC_X, KC_C, KC_D, KC_V, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH,
-                                    /**/ OSM(MOD_RCTL), MEH_T(KC_SPACE), OSM(MOD_RSFT), OSM(MOD_RGUI), OSL(1), OSM(MOD_RALT)),
+                                    /**/ KC_A, LCTL_T(KC_R), LALT_T(KC_S), LGUI_T(KC_T), KC_G, KC_M, RGUI_T(KC_N), RALT_T(KC_E), RCTL_T(KC_I), KC_O,
+                                    /**/ KC_Z, LT(_NAVIGATION, KC_X), LT(_NUMBERS, KC_C), LT(_SYMBOLS, KC_D), KC_V, KC_K, LT(_SYMBOLS, KC_H), LT(_NUMBERS, KC_COMM), LT(_NAVIGATION, KC_DOT), KC_SLSH,
+                                    /**/ KC_RCTL, MEH_T(KC_SPACE), KC_RSFT, KC_RGUI, KC_NO, KC_RALT),
 
     [_QWERTY] = LAYOUT_split_3x5_3(/**/ KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_BSPC,
                                    /**/ KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_P,
                                    /**/ KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH,
-                                   /**/ OSM(MOD_RCTL), MEH_T(KC_SPACE), OSM(MOD_RSFT), OSM(MOD_RGUI), TO(0), OSM(MOD_RALT)),
+                                   /**/ KC_RCTL, MEH_T(KC_SPACE), KC_RSFT, KC_RGUI, KC_NO, KC_RALT),
 
     [_SYMBOLS] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_MINS, KC_PLUS,
                                     /**/ KC_TAB, KC_DQUO, KC_LPRN, KC_RPRN, KC_UNDS, KC_BSLS, KC_LCBR, KC_RCBR, KC_PIPE, KC_ENT,
                                     /**/ KC_TILD, KC_QUOT, KC_EQL, KC_COLN, KC_GRV, KC_NO, KC_LBRC, KC_RBRC, KC_NO, TO(3),
-                                    /**/ KC_EXLM, KC_SCLN, KC_NO, KC_NO, TO(2), KC_RALT),
+                                    /**/ KC_EXLM, KC_SCLN, KC_NO, KC_NO, KC_NO, KC_RALT),
 
     [_NUMBERS] = LAYOUT_split_3x5_3(KC_ESC, KC_MPLY, KC_MRWD, KC_MFFD, KC_NO, KC_NO, KC_P7, KC_P8, KC_P9, KC_BSPC,
                                     /**/ KC_TAB, KC_NO, KC_VOLD, KC_VOLU, KC_NO, KC_NO, KC_P4, KC_P5, KC_P6, KC_ENT,
-                                    /**/ TO(4), KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_P1, KC_P2, KC_P3, KC_NO,
-                                    /**/ TO(0), KC_NO, KC_NO, KC_RGUI, KC_NO, KC_NO),
+                                    /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_P1, KC_P2, KC_P3, KC_NO,
+                                    /**/ KC_NO, KC_NO, KC_NO, KC_RGUI, KC_NO, KC_NO),
 
     [_NAVIGATION] = LAYOUT_split_3x5_3(/**/ KC_ESC, KC_PGDN, KC_MS_U, KC_PGUP, KC_NO, /**/ KC_NO, RCTL(RSFT(KC_TAB)), KC_UP, RCTL(KC_TAB), KC_NO,
                                        /**/ KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, /**/ KC_BTN1, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT,
-                                       /**/ KC_NO, KC_BTN2, KC_MS_WH_UP, KC_MS_WH_DOWN, KC_NO, /**/ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-                                       /**/ TO(0), KC_NO, KC_RSFT, /**/ KC_RGUI, KC_NO, KC_RALT)
+                                       /**/ KC_NO, KC_NO, KC_RALT, KC_RGUI, KC_NO, /**/ KC_BTN2, KC_MS_ACCEL0, KC_MS_ACCEL1, KC_MS_ACCEL2, KC_NO,
+                                       /**/ KC_NO, KC_NO, KC_RSFT, /**/ KC_RGUI, KC_NO, KC_RALT)
 
 };
 
-#define CLR_PURPLE \
-    { 197, 183, 238 }
+#define CLR_PURPLE {197, 183, 238}
 
-#define CLR_PINK \
-    { 0, 183, 238 }
+#define CLR_PINK {0, 183, 238}
 
-#define CLR_RED \
-    { 0, 245, 245 }
+#define CLR_RED {0, 245, 245}
 
-#define CLR_YELLOW \
-    { 42, 255, 255 }
+#define CLR_YELLOW {42, 255, 255}
 
-#define CLR_GREEN \
-    { 87, 245, 204 }
+#define CLR_GREEN {87, 245, 204}
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_SYMBOLS] = {
